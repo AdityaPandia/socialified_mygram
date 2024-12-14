@@ -493,10 +493,12 @@ String daysString = 'days';
 
 String outgoingCallString = "Outgoing Call...";
 String incomingCallString = "Incoming Call...";
+String noAnswerString = "No Answer";
 
 String outgoingString = "Outgoing";
 String incomingString = "Incoming";
 String missedString = "Missed";
+String callbackString = 'Call back';
 
 String labelEndCallString = "Are you sure you want to end your call?";
 
@@ -1220,3 +1222,16 @@ String addMoreClubsString = 'Add more clubs';
 String inviteFriendString = "Invite friends";
 
 String invitedYouToClubString = "Invited to you club";
+
+String subscriptionString = 'Subscription';
+String creatorToolsString = 'Creator tools';
+String subscribeString = 'Subscribe';
+String areYouSureToSubscribeString = 'Are you sure to subscribe';
+String forSubscribersOnlyString = 'For subscribers only';
+String subscribeToViewThisContentString = 'Subscribe {{userName}} to view this content';
+String unlockWithString = 'Unlock with';
+String mySubscribersString = 'My subscribers';
+String mySubscriptionString = 'My subscriptions';
+String subscribedYouString = 'Subscribed you';
+String thisContentNotAllowedString =
+    "Sorry, but the content you're attempting to upload is not permitted according to our policies.";

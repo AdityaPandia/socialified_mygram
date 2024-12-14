@@ -22,18 +22,20 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.google.devtools.ksp'
+apply plugin: 'com.google.gms.google-services'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-apply plugin: 'com.google.firebase.crashlytics'
+//apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'ly.img.android.sdk'
 
 android {
-    compileSdkVersion 34
+    namespace "com.example.foap"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
     }
 
     kotlinOptions {
@@ -44,20 +46,17 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    aaptOptions {
-        noCompress "tflite"
-    }
-
     defaultConfig {
         applicationId "com.socialified"
         minSdkVersion 24
         targetSdkVersion 34
+        compileSdk 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         ndk { abiFilters 'x86', 'x86_64', 'armeabi', 'armeabi-v7a', 'mips', 'mips64', 'arm64-v8a' }
 
         android {
-            ndkVersion "25.1.8937393"
+            ndkVersion "26.1.10909125"
         }
     }
     signingConfigs {
@@ -68,17 +67,38 @@ android {
             // Add debug keystore credentials here
         }
 
+        release {
+            keyAlias 'my_key'
+            keyPassword '#Keystore@789'
+            storeFile file("C:/socialified/android/app/release-key.jks")
+            storePassword '#Keystore@789'
+        }
+
+//        release {
+//            keyAlias keystoreProperties['keyAlias']
+//            keyPassword keystoreProperties['keyPassword']
+//            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+//            storePassword keystoreProperties['storePassword']
+//            // v1SigningEnabled true
+//            // v2SigningEnabled true
+//        }
     }
 
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ndk {
+                abiFilters 'armeabi-v7a','arm64-v8a','x86_64'
+            }
         }
+    }
+    androidResources {
+        noCompress 'tflite'
     }
 }
 
@@ -87,12 +107,14 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.20"
-    implementation 'com.google.firebase:firebase-messaging:23.1.2'
-    implementation 'androidx.annotation:annotation:1.6.0'
-    implementation 'com.google.android.exoplayer:exoplayer:2.17.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.0.0'
+    implementation 'com.google.firebase:firebase-messaging:24.0.0'
+    implementation 'androidx.annotation:annotation:1.8.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
+    implementation 'com.google.android.gms:play-services-ads:23.2.0'
+    ksp 'com.google.devtools.ksp:symbol-processing-api:2.0.0-1.0.22'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
 }
-
 
 // Comment out the modules you don't need, to save size.
 imglyConfig {

@@ -3,9 +3,10 @@ import '../../components/post_card/post_card.dart';
 import '../../controllers/post/single_post_detail_controller.dart';
 
 class SinglePostDetail extends StatefulWidget {
-  final int postId;
+  final int? postId;
+  final String? postUniqueId;
 
-  const SinglePostDetail({Key? key, required this.postId}) : super(key: key);
+  const SinglePostDetail({super.key, this.postId, this.postUniqueId});
 
   @override
   State<SinglePostDetail> createState() => _SinglePostDetailState();
@@ -13,11 +14,16 @@ class SinglePostDetail extends StatefulWidget {
 
 class _SinglePostDetailState extends State<SinglePostDetail> {
   final SinglePostDetailController singlePostDetailController =
-      SinglePostDetailController();
+  SinglePostDetailController();
 
   @override
   void initState() {
-    singlePostDetailController.getPostDetail(widget.postId);
+    if (widget.postId != null) {
+      singlePostDetailController.getPostDetail(widget.postId!);
+    }
+    if (widget.postUniqueId != null) {
+      singlePostDetailController.getPostDetailByUniqueId(widget.postUniqueId!);
+    }
     super.initState();
   }
 
@@ -29,44 +35,36 @@ class _SinglePostDetailState extends State<SinglePostDetail> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       backgroundColor: AppColorConstants.backgroundColor,
       body: Column(
         children: [
           backNavigationBar(title: postString.tr),
-          const SizedBox(
-            height: 8,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           GetBuilder<SinglePostDetailController>(
               init: singlePostDetailController,
               builder: (ctx) {
                 return singlePostDetailController.post.value == null &&
-                        singlePostDetailController.isLoading == false
+                    singlePostDetailController.isLoading == false
                     ? Center(
-                        child: Heading3Text(
-                          postDeletedString.tr,
-                          weight: TextWeight.bold,
-                          color: AppColorConstants.themeColor,
-                        ),
-                      )
+                  child: Heading3Text(
+                    postDeletedString.tr,
+                    weight: TextWeight.bold,
+                    color: AppColorConstants.themeColor,
+                  ),
+                )
                     : singlePostDetailController.isLoading == false
-                        ? PostCard(
-                            model: singlePostDetailController.post.value!,
-                            removePostHandler: () {
-                              Get.back();
-                            },
-                            blockUserHandler: () {
-                              Get.back();
-                            }
-                            // mediaTapHandler: (post) {
-                            //   Get.to(() => PostMediaFullScreen(post: post));
-                            // },
-                            )
-                        : Container();
+                    ? PostCard(
+                    model: singlePostDetailController.post.value!,
+                    removePostHandler: () {
+                      Get.back();
+                    },
+                    blockUserHandler: () {
+                      Get.back();
+                    })
+                    : Container();
               }),
+
         ],
       ),
     );

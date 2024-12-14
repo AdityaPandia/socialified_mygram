@@ -107,13 +107,15 @@ class NetworkConstantsUtil {
   static String addPost = 'posts';
   static String editPost = 'posts/';
 
-  static String uploadPostImage = 'posts/upload-gallary';
   static String uploadFileImage = 'file-uploads/upload-file';
   static String addCompetitionPost = 'posts/competition-image';
   static String searchPost =
       'posts/search-post?expand=user,user.userLiveDetail,contentReferenceDetail.categoryDetails,contentReferenceDetail.pollOptions,clubDetail.createdByUser,clubDetail.totalJoinedUser,originPost.user,isFavorite,originPost,pollDetails,pollDetails.pollOptions';
   static String postDetail =
       'posts/{id}?expand=user,user.userLiveDetail,clubDetail,giftSummary';
+  static String postDetailByUniqueId =
+      'posts/view-by-unique-id?expand=contentReferenceDetail.categoryDetails,contentReferenceDetail.pollOptions,user.isFollowing,user.userLiveDetail,clubDetail.createdByUser,clubDetail.totalJoinedUser,originPost.user,isFavorite,originPost,pollDetails,pollDetails.pollOptions&unique_id=';
+
   static String mentionedPosts =
       'posts/my-post-mention-user?expand=user&user_id=';
   static String likePost = 'posts/like';
@@ -162,6 +164,8 @@ class NetworkConstantsUtil {
       'chats/call-history?expand=callerDetail,receiverDetail,receiverDetail.userLiveDetail';
   static String chatHistory =
       'chats/chat-message?expand=chatMessageUser,user&room_id={{room_id}}&last_message_id={{last_message_id}}';
+  static String callDetail =
+      'chats/call-detail?call_id={{call_id}}&expand=callerDetail,receiverDetail,callerDetail.userLiveDetail,receiverDetail.userLiveDetail';
 
   //***********live TVs***********//
   static String getTVCategories =
@@ -334,4 +338,14 @@ class NetworkConstantsUtil {
   static String postRating = 'ratings';
   static String ratingList =
       'ratings?type={{type}}&reference_id={{reference_id}}&expand=user';
+  static String notificationInformation = 'notifications/information';
+  static String markNotificationAsRead = 'notifications/update-read-status';
+  //*********** Subscription ***********//
+  static String getSubscriptionPlans = "subscriptions/subscription-plan";
+  static String setSubscriptionPlanCost = "subscriptions/add-plan";
+  static String subscribeUser = "subscriptions";
+  static String subscribersList =
+      "subscriptions/subscriber-list?user_id={{user_id}}&expand=subscribedPlanStatus,subscriberDetail,subscriberDetail.subscribedStatus";
+  static String mySubscription =
+      "subscriptions/my-subscription-list?expand=subscribedPlanStatus,subscriptionUserDetail,subscriptionUserDetail.subscribedStatus";
 }

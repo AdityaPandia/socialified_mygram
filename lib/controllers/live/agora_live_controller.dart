@@ -380,7 +380,7 @@ class AgoraLiveController extends GetxController {
             }
           },
           onLocalVideoStateChanged: (VideoSourceType source,
-              LocalVideoStreamState state, LocalVideoStreamError error) {},
+              LocalVideoStreamState state, LocalVideoStreamReason reason) {},
           onCameraReady: () {},
           onVideoDeviceStateChanged: (String deviceId,
               MediaDeviceType deviceType, MediaDeviceStateType deviceState) {},

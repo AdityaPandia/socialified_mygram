@@ -29,6 +29,8 @@ class _ReelVideoPlayerState extends State<ReelVideoPlayer> {
   @override
   void initState() {
     super.initState();
+
+    print('widget.reel ${widget.reel.id}');
     prepareVideo(url: widget.reel.gallery.first.filePath);
   }
 

@@ -183,7 +183,14 @@ class MiscApi {
       if (result?.success == true) {
         var items = result!.data['files'] as List<dynamic>;
 
-        resultCallback(items.first['file'], items.first['fileUrl']);
+        bool isProhabited = items.first['isProhabited'];
+
+        if (isProhabited == false) {
+          resultCallback(items.first['file'], items.first['fileUrl']);
+        } else {
+          AppUtil.showToast(
+              message: thisContentNotAllowedString.tr, isSuccess: false);
+        }
       }
     });
   }
@@ -220,4 +227,32 @@ class MiscApi {
         url: url, param: {"user_id": userId.toString()}).then((result) {});
   }
 
+
+  static getNotificationInfo(
+      {required Function(int) resultCallback}) async {
+    var url = NetworkConstantsUtil.notificationInformation;
+
+    await ApiWrapper().getApi(url: url).then((result) {
+      if (result?.success == true) {
+        var count = result!.data['unread_notification'];
+        resultCallback(count);
+      }
+    });
+  }
+
+  static markNotificationAsRead(
+      {required int id, required Function() resultCallback}) async {
+    var url = NetworkConstantsUtil.markNotificationAsRead;
+
+    await ApiWrapper().postApi(url: url, param: {
+      "id": id,
+      "is_read_all": 0
+
+      /// for single send 0, send 1 to all as read
+    }).then((result) {
+      if (result?.success == true) {
+        resultCallback();
+      }
+    });
+  }
 }

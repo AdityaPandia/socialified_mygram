@@ -789,19 +789,7 @@ class PostCardState extends State<PostCard> {
                           });
                     }),
                 divider(),
-                ListTile(
-                    title: Center(
-                        child: Heading6Text(
-                      shareString.tr,
-                      weight: TextWeight.bold,
-                    )),
-                    onTap: () async {
-                      Get.back();
-                      postCardController.sharePost(
-                        post: widget.model,
-                      );
-                    }),
-                divider(),
+
                 ListTile(
                     title: Center(child: BodyLargeText(cancelString.tr)),
                     onTap: () => Get.back()),
@@ -851,19 +839,7 @@ class PostCardState extends State<PostCard> {
                           });
                     }),
                 divider(),
-                ListTile(
-                    title: Center(
-                        child: Heading6Text(
-                      shareString.tr,
-                      weight: TextWeight.bold,
-                    )),
-                    onTap: () async {
-                      Get.back();
-                      postCardController.sharePost(
-                        post: widget.model,
-                      );
-                    }),
-                divider(),
+
                 ListTile(
                     title: Center(
                       child: Heading6Text(

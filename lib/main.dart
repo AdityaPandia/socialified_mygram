@@ -19,6 +19,7 @@ import 'package:foap/util/constant_util.dart';
 import 'components/giphy/src/l10n/l10n.dart';
 import 'components/reply_chat_cells/post_gift_controller.dart';
 import 'components/smart_text_field.dart';
+import 'controllers/chat_and_call/voip_controller.dart';
 import 'controllers/clubs/clubs_controller.dart';
 import 'controllers/misc/faq_controller.dart';
 import 'package:foap/screens/dashboard/dashboard_screen.dart';
@@ -33,6 +34,7 @@ import 'components/post_card_controller.dart';
 import 'controllers/misc/gift_controller.dart';
 import 'controllers/misc/misc_controller.dart';
 import 'controllers/misc/users_controller.dart';
+import 'controllers/notification/notifications_controller.dart';
 import 'controllers/post/add_post_controller.dart';
 import 'controllers/chat_and_call/agora_call_controller.dart';
 import 'controllers/live/agora_live_controller.dart';
@@ -54,6 +56,7 @@ import 'controllers/misc/subscription_packages_controller.dart';
 import 'helper/device_info.dart';
 import 'helper/languages.dart';
 import 'manager/db_manager.dart';
+import 'manager/deep_link_manager.dart';
 import 'manager/location_manager.dart';
 import 'manager/notification_manager.dart';
 import 'manager/player_manager.dart';
@@ -73,7 +76,7 @@ late List<CameraDescription> cameras;
 bool isLaunchedFromCallNotification = false;
 bool isAnyPageInStack = false;
 
-Future<void> main() async {
+ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
   HttpOverrides.global = MyHttpOverrides();
@@ -81,10 +84,13 @@ Future<void> main() async {
   await Firebase.initializeApp(
     name: AppConfigConstants.appName,
     options: DefaultFirebaseOptions.currentPlatform,
-  );
+  ).whenComplete(() {
+    print('initializeApp completed');
+  });
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   DeviceInfoManager.collectDeviceInfo();
+  DeepLinkManager.init();
 
   String? token = await FlutterCallkitIncoming.getDevicePushTokenVoIP();
   if (token != null) {
@@ -108,6 +114,8 @@ Future<void> main() async {
   Get.put(SettingsController());
   Get.put(SubscriptionPackageController());
   Get.put(AgoraCallController());
+  Get.put(VoipController());
+
   Get.put(AgoraLiveController());
   Get.put(LoginController());
   Get.put(HomeController());
@@ -136,6 +144,7 @@ Future<void> main() async {
   Get.put(CreateReelController());
   Get.put(CameraControllerService());
   Get.put(HighlightsController());
+  Get.put(NotificationController());
 
   setupServiceLocator();
 
@@ -239,9 +248,16 @@ class _SocialifiedAppState extends State<SocialifiedApp> {
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background, such as Firestore,
   // make sure you call `initializeApp` before using other Firebase services.
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+
+  print('message.data ${message.data}');
+  Get.put(DashboardController());
+  Get.put(UserProfileManager());
+  Get.put(SettingsController());
+  Get.put(AgoraCallController());
+  Get.put(VoipController());
 
   NotificationManager().parseNotificationMessage(message.data);
 }

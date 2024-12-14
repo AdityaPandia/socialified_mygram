@@ -198,6 +198,8 @@ int uploadMediaTypeId(UploadMediaType type) {
       return 5;
     case UploadMediaType.club:
       return 5;
+    case UploadMediaType.post:
+      return 7;
     case UploadMediaType.verification:
       return 12;
   }
@@ -214,3 +216,31 @@ int liveViewerRole(LiveUserRole role) {
       return 1;
   }
 }
+
+
+SMSGateway smsGatewayType(int id) {
+  switch (id) {
+    case 1:
+      return SMSGateway.twilio;
+    case 2:
+      return SMSGateway.sms91;
+    case 3:
+      return SMSGateway.firebase;
+    default:
+      return SMSGateway.twilio;
+  }
+}
+
+SubscribedStatus subscribedStatusType(int id) {
+  switch (id) {
+    case 0:
+      return SubscribedStatus.notSubscribed;
+    case 1:
+      return SubscribedStatus.subscribed;
+    case 2:
+      return SubscribedStatus.expired;
+    default:
+      return SubscribedStatus.notSubscribed;
+  }
+}
+

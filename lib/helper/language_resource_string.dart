@@ -4893,5 +4893,4 @@ class LanguageStrings {
     "liked your post": "gostei da sua postagem",
     "sent a gift": "enviou um presente",
   };
-
 }
