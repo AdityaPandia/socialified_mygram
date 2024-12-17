@@ -179,14 +179,29 @@ dependencies:
       url: https://github.com/Kanwarpalsingh1986/auto_orientation.git
       ref: master
   launcher_name: ^1.0.2
+  package_rename: ^1.7.1
+  flutter_launcher_icons: ^0.14.2
 
 dev_dependencies:
   launcher_name: ^1.0.2 
   flutter_test:
     sdk: flutter
 
+package_rename_config:
+  android:
+    app_name: "Mygram"
+    package_name: "com.in.mygram"    
+
 launcher_name:
   default: "Mygram"
+
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/main_icon.png" 
+  remove_alpha_ios: true
+  adaptive_icon_foreground: "assets/main_icon.png" 
+  adaptive_icon_background: "#ffffff"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

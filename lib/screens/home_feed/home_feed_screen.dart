@@ -131,9 +131,9 @@ class HomeFeedState extends State<HomeFeedScreen> {
                             Duration.zero,
                             () => showGeneralDialog(
                                 context: Get.context!,
-                                pageBuilder: (context, animation,
-                                        secondaryAnimation) =>
-                                    const ContentCreatorView()),
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        const ContentCreatorView()),
                           );
                         }),
                         const SizedBox(
@@ -147,14 +147,12 @@ class HomeFeedState extends State<HomeFeedScreen> {
                                   color: AppColorConstants.themeColor,
                                 )
                                     .rp(_notificationController
-                                                .unreadNotificationCount
-                                                .value >
+                                                .unreadNotificationCount.value >
                                             0
                                         ? 15
                                         : 0)
                                     .ripple(() {
-                                  Get.to(
-                                      () => const NotificationsScreen());
+                                  Get.to(() => const NotificationsScreen());
                                 }),
                                 if (_notificationController
                                         .unreadNotificationCount.value >
@@ -163,13 +161,11 @@ class HomeFeedState extends State<HomeFeedScreen> {
                                       right: 0,
                                       top: 0,
                                       child: Container(
-                                        color:
-                                            AppColorConstants.themeColor,
+                                        color: AppColorConstants.themeColor,
                                         child: Center(
                                           child: Text(
                                             _notificationController
-                                                .unreadNotificationCount
-                                                .value
+                                                .unreadNotificationCount.value
                                                 .toString(),
                                             style: const TextStyle(
                                                 fontSize: 8,
@@ -208,31 +204,37 @@ class HomeFeedState extends State<HomeFeedScreen> {
                           ? const StoryAndHighlightsShimmer()
                           : storiesView());
                 } else if (index == 1) {
-                  return postingView()
-                      .hp(DesignConstants.horizontalPadding);
+                  return postingView().hp(DesignConstants.horizontalPadding);
                 } else if (index == 2) {
                   return Obx(() => Column(
                         children: [
-                          HorizontalMenuBar(
-                              padding: EdgeInsets.only(
-                                  left: DesignConstants.horizontalPadding,
-                                  right:
-                                      DesignConstants.horizontalPadding),
-                              onSegmentChange: (segment) {
-                                _homeController.categoryIndexChanged(
-                                    index: segment,
-                                    callback: () {
-                                      _refreshController
-                                          .refreshCompleted();
-                                    });
-                              },
-                              selectedIndex:
-                                  _homeController.categoryIndex.value,
-                              menus: [
-                                allString.tr,
-                                followingString.tr,
-                                videosString.tr
-                              ]),
+                          Stack(
+                            children: [
+                              HorizontalMenuBar(
+                                  padding: EdgeInsets.only(
+                                      left: DesignConstants.horizontalPadding,
+                                      right: DesignConstants.horizontalPadding),
+                                  onSegmentChange: (segment) {
+                                    _homeController.categoryIndexChanged(
+                                        index: segment,
+                                        callback: () {
+                                          _refreshController.refreshCompleted();
+                                        });
+                                  },
+                                  selectedIndex:
+                                      _homeController.categoryIndex.value,
+                                  menus: [
+                                    allString.tr,
+                                    // followingString.tr,
+                                    // videosString.tr
+                                  ]),
+                              Container(
+                                height: 40,
+                                width: 100,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
                           _homeController.isRefreshingPosts.value == true
                               ? SizedBox(
                                   height: Get.height * 0.9,
@@ -264,8 +266,7 @@ class HomeFeedState extends State<HomeFeedScreen> {
                 }
               },
               separatorBuilder: (context, index) {
-                if (_settingsController.setting.value?.enablePolls ==
-                    true) {
+                if (_settingsController.setting.value?.enablePolls == true) {
                   return polls(index);
                 } else {
                   return const SizedBox(
@@ -293,21 +294,17 @@ class HomeFeedState extends State<HomeFeedScreen> {
                 _addPostController.postingMedia.isNotEmpty &&
                         _addPostController.postingMedia.first.mediaType !=
                             GalleryMediaType.gif
-                    ? _addPostController.postingMedia.first.thumbnail !=
-                            null
+                    ? _addPostController.postingMedia.first.thumbnail != null
                         ? Image.memory(
-                            _addPostController
-                                .postingMedia.first.thumbnail!,
+                            _addPostController.postingMedia.first.thumbnail!,
                             fit: BoxFit.cover,
                             width: 40,
                             height: 40,
                           ).round(5)
-                        : _addPostController
-                                    .postingMedia.first.mediaType ==
+                        : _addPostController.postingMedia.first.mediaType ==
                                 GalleryMediaType.photo
                             ? Image.file(
-                                _addPostController
-                                    .postingMedia.first.file!,
+                                _addPostController.postingMedia.first.file!,
                                 fit: BoxFit.cover,
                                 width: 40,
                                 height: 40,

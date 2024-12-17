@@ -15,7 +15,7 @@ class AppConfigConstants {
   static String appTagline = 'Share your day activity with friends';
   static const googleMapApiKey = 'your_google_api_key';
 
-  static const restApiBaseUrl = 'https://maroon-armadillo-822867.hostingersite.com/api/web/v1/'; //'https://your_domain_name/app/api/web/v1/';
+  static const restApiBaseUrl = 'https://mygram.in/api/web/v1/'; //'https://maroon-armadillo-822867.hostingersite.com/api/web/v1/'; //'https://your_domain_name/app/api/web/v1/';
 
   static const socketApiBaseUrl = "https://maroon-armadillo-822867.hostingersite.com:4000/";
 

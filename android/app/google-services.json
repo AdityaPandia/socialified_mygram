@@ -1,53 +1,37 @@
 {
   "project_info": {
-    "project_number": "727187514732",
-    "project_id": "socialified-f7f2c",
-    "storage_bucket": "socialified-f7f2c.firebasestorage.app"
+    "project_number": "970518901347",
+    "project_id": "mygram-dd036",
+    "storage_bucket": "mygram-dd036.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:727187514732:android:cc39c18376381f71f4ff49",
+        "mobilesdk_app_id": "1:970518901347:android:c0f1a98205154676d03e56",
         "android_client_info": {
-          "package_name": "com.socialified"
+          "package_name": "com.in.mygram"
         }
       },
       "oauth_client": [
         {
-          "client_id": "727187514732-kkliv4ro6nl3ujudrue4fgt350qtejqm.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.socialified",
-            "certificate_hash": "500f7d3ab2a9ade0271bcb2822a3caebc6e300aa"
-          }
-        },
-        {
-          "client_id": "727187514732-t01vldelsiticiui06qj0eh79h72obu8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.socialified",
-            "certificate_hash": "241cb1943424cab375cd05875ff40dc38d5deecb"
-          }
-        },
-        {
-          "client_id": "727187514732-olc9aohulvpfic49lnfa9j588o7o4svi.apps.googleusercontent.com",
+          "client_id": "970518901347-31016a0crubfntnj2ekuevar8nsp8kqo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCdCGIj_PPBerHwuNVPdUBd02Dd534jUhU"
+          "current_key": "AIzaSyBmGAFN7R9d7pE8jq9jtHg9cdSLr5wXkok"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "727187514732-olc9aohulvpfic49lnfa9j588o7o4svi.apps.googleusercontent.com",
+              "client_id": "970518901347-31016a0crubfntnj2ekuevar8nsp8kqo.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "727187514732-f19tnerj82blp3a5ce48kkfil4lhntao.apps.googleusercontent.com",
+              "client_id": "970518901347-uklt8ouhbks1lni2cqmr343vjpss21ni.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.baljit.apptesting"

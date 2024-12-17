@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCdCGIj_PPBerHwuNVPdUBd02Dd534jUhU',
-    appId: '1:727187514732:android:cc39c18376381f71f4ff49',
-    messagingSenderId: '727187514732',
-    projectId: 'socialified-f7f2c',
-    storageBucket: 'socialified-f7f2c.firebasestorage.app',
+    apiKey: 'AIzaSyBmGAFN7R9d7pE8jq9jtHg9cdSLr5wXkok',
+    appId: '1:970518901347:android:c0f1a98205154676d03e56',
+    messagingSenderId: '970518901347',
+    projectId: 'mygram-dd036',
+    storageBucket: 'mygram-dd036.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDuTLqLqs93OmegHoIVx2Z8Y1bl3xHIqr0',
-    appId: '1:727187514732:ios:55c4ebb5b065d570f4ff49',
-    messagingSenderId: '727187514732',
-    projectId: 'socialified-f7f2c',
-    storageBucket: 'socialified-f7f2c.firebasestorage.app',
+    apiKey: 'AIzaSyA2EFaLN2FdKzHIPyMHNtFrKTkNowXrZ-k',
+    appId: '1:970518901347:ios:5f73b8500d3f3dd4d03e56',
+    messagingSenderId: '970518901347',
+    projectId: 'mygram-dd036',
+    storageBucket: 'mygram-dd036.firebasestorage.app',
     iosBundleId: 'com.baljit.apptesting',
   );
 
