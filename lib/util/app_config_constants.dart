@@ -17,7 +17,7 @@ class AppConfigConstants {
 
   static const restApiBaseUrl = 'https://mygram.in/api/web/v1/'; //'https://maroon-armadillo-822867.hostingersite.com/api/web/v1/'; //'https://your_domain_name/app/api/web/v1/';
 
-  static const socketApiBaseUrl = "https://maroon-armadillo-822867.hostingersite.com:4000/";
+  static const socketApiBaseUrl = "https://chat.mygram.in:4000/";
 
   // Chat encryption key -- DO NOT CHANGE THIS
   static const encryptionKey = 'bbC2H19lkVbQDfakxcrtNMQdd0FloLyw';

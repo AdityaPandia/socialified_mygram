@@ -558,10 +558,15 @@ class ThemeIconWidget extends StatelessWidget {
           color: color ?? AppColorConstants.iconColor,
         );
       case ThemeIcon.reels:
-        return Icon(
-          Icons.play_arrow_outlined,
-          size: size ?? 20,
-          color: color ?? AppColorConstants.iconColor,
+        // return Icon(
+        //   Icons.play_arrow_outlined,
+        //   size: size ?? 20,
+        //   color: color ?? AppColorConstants.iconColor,
+        // );
+        return Image.asset(
+          "assets/main_icon.png",
+          height: 30,
+          width: 30,
         );
 
       case ThemeIcon.delete:

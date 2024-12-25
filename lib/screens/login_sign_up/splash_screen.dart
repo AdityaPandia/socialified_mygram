@@ -24,8 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 4), () async{
-
+    Future.delayed(const Duration(seconds: 4), () async {
       Get.offAll(() => const LoadingScreen());
     });
   }
@@ -88,17 +87,15 @@ class _SplashScreenState extends State<SplashScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/spash_logo.png',
+                    'assets/main_icon.png',
                     height: 150,
                     width: 150,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
-                  BodyLargeText(
-                    AppConfigConstants.appName,
-                      weight: TextWeight.medium
-                  ),
+                  BodyLargeText(AppConfigConstants.appName,
+                      weight: TextWeight.medium),
                   Heading6Text(
                     AppConfigConstants.appTagline.tr,
                   ),
